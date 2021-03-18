@@ -157,8 +157,6 @@ public class Registration2 {
 
 
 
-//          driver.findElement(By.id("input-label-1")).click();
-//          driver.findElement(By.id("input-label-1")).sendKeys("Нерекламное название"); //здесь будет вставка текста js, потому что поле не воспринимает автотест
 
         driver.findElement(By.id("input-label-2")).click();
         driver.findElement(By.id("input-label-2")).sendKeys(AdvertisingCompanyName); // ПАО сформировано js
@@ -181,11 +179,13 @@ public class Registration2 {
 
 
         driver.findElement(By.cssSelector("#at_legalAdress_accon > span")).click();
+
+        {
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[2]/input")));
+        }
+
         driver.findElement(By.xpath("//div[2]/input")).click();
-//        {
-//            WebDriverWait wait = new WebDriverWait(driver, 30);
-//            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(.,\'Санкт-Петербург г.\')]")));
-//        }
 
         {
             WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -337,7 +337,7 @@ public class Registration2 {
 
 //        ожидание. нужно для того, чтобы информация о новой компании попала в базу
         try {
-            Thread.sleep(7000);
+            Thread.sleep(8000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
